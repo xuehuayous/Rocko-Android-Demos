@@ -33,58 +33,58 @@ import rx.functions.Func1;
  */
 public class UserDataRepository implements UserRepository {
 
-	private UserDataStoreFactory userDataStoreFactory;
-	private UserEntityDataMapper userEntityDataMapper;
+    private UserDataStoreFactory userDataStoreFactory;
+    private UserEntityDataMapper userEntityDataMapper;
 
-	public UserDataRepository(Context appContext) {
-		this(new UserDataStoreFactory(appContext), new UserEntityDataMapper());
-	}
+    public UserDataRepository(Context appContext) {
+        this(new UserDataStoreFactory(appContext), new UserEntityDataMapper());
+    }
 
-	/**
-	 * Constructs a {@link UserRepository}.
-	 *
-	 * @param dataStoreFactory     A factory to construct different data source implementations.
-	 * @param userEntityDataMapper {@link UserEntityDataMapper}.
-	 */
-	public UserDataRepository(UserDataStoreFactory dataStoreFactory,
-	                          UserEntityDataMapper userEntityDataMapper) {
-		this.userDataStoreFactory = dataStoreFactory;
-		this.userEntityDataMapper = userEntityDataMapper;
-	}
+    /**
+     * Constructs a {@link UserRepository}.
+     *
+     * @param dataStoreFactory     A factory to construct different data source implementations.
+     * @param userEntityDataMapper {@link UserEntityDataMapper}.
+     */
+    public UserDataRepository(UserDataStoreFactory dataStoreFactory,
+                              UserEntityDataMapper userEntityDataMapper) {
+        this.userDataStoreFactory = dataStoreFactory;
+        this.userEntityDataMapper = userEntityDataMapper;
+    }
 
-	public void setUserDataStoreFactory(UserDataStoreFactory userDataStoreFactory) {
-		this.userDataStoreFactory = userDataStoreFactory;
-	}
+    public void setUserDataStoreFactory(UserDataStoreFactory userDataStoreFactory) {
+        this.userDataStoreFactory = userDataStoreFactory;
+    }
 
-	public void setUserEntityDataMapper(UserEntityDataMapper userEntityDataMapper) {
-		this.userEntityDataMapper = userEntityDataMapper;
-	}
+    public void setUserEntityDataMapper(UserEntityDataMapper userEntityDataMapper) {
+        this.userEntityDataMapper = userEntityDataMapper;
+    }
 
-	@SuppressWarnings("Convert2MethodRef")
-	@Override
-	public Observable<List<User>> users() {
-		//we always get all users from the cloud
-		final UserDataStore userDataStore = this.userDataStoreFactory.createCloudDataStore();
+    @SuppressWarnings("Convert2MethodRef")
+    @Override
+    public Observable<List<User>> users() {
+        //we always get all users from the cloud
+        final UserDataStore userDataStore = this.userDataStoreFactory.createCloudDataStore();
 
-		return userDataStore.userEntityList()
-				.map(new Func1<List<UserEntity>, List<User>>() {
-					@Override
-					public List<User> call(List<UserEntity> userEntities) {
-						return userEntityDataMapper.transform(userEntities);
-					}
-				});
-	}
+        return userDataStore.userEntityList()
+                .map(new Func1<List<UserEntity>, List<User>>() {
+                    @Override
+                    public List<User> call(List<UserEntity> userEntities) {
+                        return userEntityDataMapper.transform(userEntities);
+                    }
+                });
+    }
 
-	@SuppressWarnings("Convert2MethodRef")
-	@Override
-	public Observable<User> user(int userId) {
-		final UserDataStore userDataStore = this.userDataStoreFactory.create(userId);
-		return userDataStore.userEntityDetails(userId)
-				.map(new Func1<UserEntity, User>() {
-					@Override
-					public User call(UserEntity userEntity) {
-						return userEntityDataMapper.transform(userEntity);
-					}
-				});
-	}
+    @SuppressWarnings("Convert2MethodRef")
+    @Override
+    public Observable<User> user(int userId) {
+        final UserDataStore userDataStore = this.userDataStoreFactory.create(userId);
+        return userDataStore.userEntityDetails(userId)
+                .map(new Func1<UserEntity, User>() {
+                    @Override
+                    public User call(UserEntity userEntity) {
+                        return userEntityDataMapper.transform(userEntity);
+                    }
+                });
+    }
 }

@@ -16,61 +16,61 @@ import com.fernandocejas.android10.sample.presentation.model.UserModel;
  */
 public class UserDetailsViewModel extends LoadingViewModel {
 
-	public final ObservableBoolean showUserDetails = new ObservableBoolean(true);
-	public final ObservableField<UserModel> userObs = new ObservableField<>();
+    public final ObservableBoolean showUserDetails = new ObservableBoolean(true);
+    public final ObservableField<UserModel> userObs = new ObservableField<>();
 
-	GetUserDetails getUserDetailsUseCase = new GetUserDetails(AndroidApplication.getContext());
-	UserModelDataMapper userModelDataMapper = new UserModelDataMapper();
+    GetUserDetails getUserDetailsUseCase = new GetUserDetails(AndroidApplication.getContext());
+    UserModelDataMapper userModelDataMapper = new UserModelDataMapper();
 
-	@BindView
-	@Override
-	public void showLoading() {
+    @BindView
+    @Override
+    public void showLoading() {
 //		super.showLoading(); // show Details
-		showRetry.set(false);
-		showLoading.set(true);
-		showUserDetails.set(true);
-	}
+        showRetry.set(false);
+        showLoading.set(true);
+        showUserDetails.set(true);
+    }
 
-	@BindView
-	@Override
-	public void showRetry() {
-		super.showRetry();
-		showUserDetails.set(false);
-	}
+    @BindView
+    @Override
+    public void showRetry() {
+        super.showRetry();
+        showUserDetails.set(false);
+    }
 
-	@BindView
-	public void showUserDetails(UserModel userModel) {
-		showLoading.set(false);
-		showRetry.set(false);
-		showUserDetails.set(true);
-		userObs.set(userModel);
-	}
+    @BindView
+    public void showUserDetails(UserModel userModel) {
+        showLoading.set(false);
+        showRetry.set(false);
+        showUserDetails.set(true);
+        userObs.set(userModel);
+    }
 
 
-	@Command
-	public void loadUserDetailsCommand(int userId) {
-		showLoading();
-		getUserDetailsUseCase.setUserId(userId);
-		getUserDetailsUseCase.execute(new DefaultSubscriber<User>(){
-			@Override
-			public void onNext(User user) {
-				showUserDetails(userModelDataMapper.transformUser(user));
-			}
+    @Command
+    public void loadUserDetailsCommand(int userId) {
+        showLoading();
+        getUserDetailsUseCase.setUserId(userId);
+        getUserDetailsUseCase.execute(new DefaultSubscriber<User>() {
+            @Override
+            public void onNext(User user) {
+                showUserDetails(userModelDataMapper.transformUser(user));
+            }
 
-			@Override
-			public void onError(Throwable e) {
-				showRetry();
-			}
-		});
-	}
+            @Override
+            public void onError(Throwable e) {
+                showRetry();
+            }
+        });
+    }
 
-	@Override
-	public View.OnClickListener onRetryClick() {
-		return new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				loadUserDetailsCommand(userObs.get().getUserId());
-			}
-		};
-	}
+    @Override
+    public View.OnClickListener onRetryClick() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadUserDetailsCommand(userObs.get().getUserId());
+            }
+        };
+    }
 }

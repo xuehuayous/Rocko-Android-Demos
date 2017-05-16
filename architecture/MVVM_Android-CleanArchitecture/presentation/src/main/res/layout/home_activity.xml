@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:bind="http://schemas.android.com/apk/res-auto">
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data class="com.fernandocejas.android10.sample.presentation.HomeBinding">
 
         <variable
             name="viewModel"
-            type="com.fernandocejas.android10.sample.presentation.viewmodel.HomeViewModel"/>
+            type="com.fernandocejas.android10.sample.presentation.viewmodel.HomeViewModel" />
     </data>
 
     <LinearLayout
@@ -23,8 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/url"
-            />
+            android:text="@string/url" />
 
         <ImageView
             android:layout_width="match_parent"
@@ -33,16 +32,14 @@
             android:layout_marginTop="24dp"
             android:contentDescription="@string/string_content_description"
             android:scaleType="fitCenter"
-            android:src="@drawable/logo"
-            />
+            android:src="@drawable/logo" />
 
         <Button
             android:id="@+id/btn_LoadData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_text_load_data"
-            bind:onClickListener="@{viewModel.onClickLoadData}"
-            />
+            bind:onClickListener="@{viewModel.onClickLoadData}" />
     </LinearLayout>
 
 </layout>

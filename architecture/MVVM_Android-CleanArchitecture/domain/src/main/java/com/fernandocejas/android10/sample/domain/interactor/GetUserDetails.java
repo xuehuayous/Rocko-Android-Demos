@@ -30,36 +30,36 @@ import rx.Observable;
  */
 public class GetUserDetails extends UseCase<User> {
 
-	int userId;
-	UserRepository userRepository;
+    int userId;
+    UserRepository userRepository;
 
-	public GetUserDetails(Context appContext) {
-		this(0, new UserDataRepository(appContext));
-	}
+    public GetUserDetails(Context appContext) {
+        this(0, new UserDataRepository(appContext));
+    }
 
-	public GetUserDetails(int userId, Context appContext) {
-		this(userId, new UserDataRepository(appContext));
-	}
+    public GetUserDetails(int userId, Context appContext) {
+        this(userId, new UserDataRepository(appContext));
+    }
 
-	public GetUserDetails(int userId, UserRepository userRepository) {
-		this.userId = userId;
-		this.userRepository = userRepository;
-	}
+    public GetUserDetails(int userId, UserRepository userRepository) {
+        this.userId = userId;
+        this.userRepository = userRepository;
+    }
 
-	public void setUserRepository(UserRepository userRepository) {
-		this.userRepository = userRepository;
-	}
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
-	public int getUserId() {
-		return userId;
-	}
+    public int getUserId() {
+        return userId;
+    }
 
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
-	@Override
-	protected Observable<User> buildUseCaseObservable() {
-		return this.userRepository.user(this.userId);
-	}
+    @Override
+    protected Observable<User> buildUseCaseObservable() {
+        return this.userRepository.user(this.userId);
+    }
 }

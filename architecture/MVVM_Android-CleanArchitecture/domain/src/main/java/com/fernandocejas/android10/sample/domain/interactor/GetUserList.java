@@ -32,22 +32,22 @@ import rx.Observable;
  */
 public class GetUserList extends UseCase<List<User>> {
 
-	UserRepository userRepository;
+    UserRepository userRepository;
 
-	public GetUserList(Context appContext) {
-		this(new UserDataRepository(appContext));
-	}
+    public GetUserList(Context appContext) {
+        this(new UserDataRepository(appContext));
+    }
 
-	public GetUserList(UserRepository userRepository) {
-		this.userRepository = userRepository;
-	}
+    public GetUserList(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
-	public void setUserRepository(UserRepository userRepository) {
-		this.userRepository = userRepository;
-	}
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
-	@Override
-	protected Observable<List<User>> buildUseCaseObservable() {
-		return this.userRepository.users();
-	}
+    @Override
+    protected Observable<List<User>> buildUseCaseObservable() {
+        return this.userRepository.users();
+    }
 }
