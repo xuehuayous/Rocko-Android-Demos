@@ -43,6 +43,9 @@ dependencies {
   compile dataDependencies.rxJava
   compile dataDependencies.rxAndroid
   compile dataDependencies.androidAnnotations
+  compile dataDependencies.retrofit2
+  compile dataDependencies.converterGson
+  compile dataDependencies.adapterRxjava
 
   testCompile testDependencies.junit
   testCompile testDependencies.assertj

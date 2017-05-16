@@ -19,6 +19,8 @@ import com.fernandocejas.android10.sample.data.entity.UserEntity;
 
 import java.util.List;
 
+import retrofit2.http.GET;
+import retrofit2.http.Path;
 import rx.Observable;
 
 /**
@@ -28,14 +30,10 @@ public interface RestApi {
     String API_BASE_URL =
             "https://raw.githubusercontent.com/android10/Sample-Data/master/Android-CleanArchitecture/";
 
-    /** Api url for getting all users */
-    String API_URL_GET_USER_LIST = API_BASE_URL + "users.json";
-    /** Api url for getting a user profile: Remember to concatenate id + 'json' */
-    String API_URL_GET_USER_DETAILS = API_BASE_URL + "user_";
-
     /**
      * Retrieves an {@link rx.Observable} which will emit a List of {@link UserEntity}.
      */
+    @GET("users.json")
     Observable<List<UserEntity>> userEntityList();
 
     /**
@@ -43,5 +41,6 @@ public interface RestApi {
      *
      * @param userId The user id used to get user data.
      */
-    Observable<UserEntity> userEntityById(final int userId);
+    @GET("user_{userId}.json")
+    Observable<UserEntity> userEntityById(@Path("userId") int userId);
 }
