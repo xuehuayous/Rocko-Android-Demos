@@ -34,7 +34,7 @@ import rx.subscriptions.Subscriptions;
  * By convention each UseCase implementation will return the result using a {@link rx.Subscriber}
  * that will execute its job in a background thread and will post the result in the UI thread.
  */
-public abstract class UseCase {
+public abstract class UseCase<T> {
 
 	ThreadExecutor threadExecutor = new JobExecutor();
 	PostExecutionThread postExecutionThread = new UIThread();
@@ -42,10 +42,20 @@ public abstract class UseCase {
 	private Subscription subscription = Subscriptions.empty();
 
 
+	/**
+	 * Set the background worker threads
+	 *
+	 * @param threadExecutor
+	 */
 	public void setThreadExecutor(ThreadExecutor threadExecutor) {
 		this.threadExecutor = threadExecutor;
 	}
 
+	/**
+	 * Set the foreground thread working threads;
+	 *
+	 * @param postExecutionThread
+	 */
 	public void setPostExecutionThread(PostExecutionThread postExecutionThread) {
 		this.postExecutionThread = postExecutionThread;
 	}
@@ -53,7 +63,7 @@ public abstract class UseCase {
 	/**
 	 * Builds an {@link rx.Observable} which will be used when executing the current {@link UseCase}.
 	 */
-	protected abstract Observable buildUseCaseObservable();
+	protected abstract Observable<T> buildUseCaseObservable();
 
 	/**
 	 * Executes the current use case.

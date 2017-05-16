@@ -18,6 +18,7 @@ package com.fernandocejas.android10.sample.domain.interactor;
 
 import android.content.Context;
 
+import com.fernandocejas.android10.sample.data.dto.User;
 import com.fernandocejas.android10.sample.domain.interactor.repository.UserDataRepository;
 import com.fernandocejas.android10.sample.domain.interactor.repository.UserRepository;
 
@@ -27,7 +28,7 @@ import rx.Observable;
  * This class is an implementation of {@link UseCase} that represents a use case for
  * retrieving data related to an specific {@link com.fernandocejas.android10.sample.data.dto.User}.
  */
-public class GetUserDetails extends UseCase {
+public class GetUserDetails extends UseCase<User> {
 
 	int userId;
 	UserRepository userRepository;
@@ -58,7 +59,7 @@ public class GetUserDetails extends UseCase {
 	}
 
 	@Override
-	protected Observable buildUseCaseObservable() {
+	protected Observable<User> buildUseCaseObservable() {
 		return this.userRepository.user(this.userId);
 	}
 }

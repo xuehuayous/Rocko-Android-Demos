@@ -22,13 +22,15 @@ import com.fernandocejas.android10.sample.data.dto.User;
 import com.fernandocejas.android10.sample.domain.interactor.repository.UserDataRepository;
 import com.fernandocejas.android10.sample.domain.interactor.repository.UserRepository;
 
+import java.util.List;
+
 import rx.Observable;
 
 /**
  * This class is an implementation of {@link UseCase} that represents a use case for
  * retrieving a collection of all {@link User}.
  */
-public class GetUserList extends UseCase {
+public class GetUserList extends UseCase<List<User>> {
 
 	UserRepository userRepository;
 
@@ -45,7 +47,7 @@ public class GetUserList extends UseCase {
 	}
 
 	@Override
-	public Observable buildUseCaseObservable() {
+	protected Observable<List<User>> buildUseCaseObservable() {
 		return this.userRepository.users();
 	}
 }
