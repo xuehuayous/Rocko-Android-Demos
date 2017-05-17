@@ -3,7 +3,7 @@
  *
  * @author Fernando Cejas (the android10 coder)
  */
-package com.fernandocejas.android10.sample.presentation.view.activity;
+package com.fernandocejas.android10.sample.presentation.userdetail;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,8 +11,8 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.Window;
 
+import com.fernandocejas.android10.sample.presentation.BaseActivity;
 import com.fernandocejas.android10.sample.presentation.R;
-import com.fernandocejas.android10.sample.presentation.view.fragment.UserDetailsFragment;
 
 /**
  * Activity that shows details of a certain user.

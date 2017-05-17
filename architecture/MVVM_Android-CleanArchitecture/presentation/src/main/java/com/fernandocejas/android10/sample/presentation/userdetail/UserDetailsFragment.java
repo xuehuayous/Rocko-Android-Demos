@@ -3,7 +3,7 @@
  *
  * @author Fernando Cejas (the android10 coder)
  */
-package com.fernandocejas.android10.sample.presentation.view.fragment;
+package com.fernandocejas.android10.sample.presentation.userdetail;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 
 import com.fernandocejas.android10.sample.presentation.R;
 import com.fernandocejas.android10.sample.presentation.UserDetailsBinding;
-import com.fernandocejas.android10.sample.presentation.viewmodel.UserDetailsViewModel;
+import com.fernandocejas.android10.sample.presentation.BaseFragment;
 
 /**
  * Fragment that shows details of a certain user.

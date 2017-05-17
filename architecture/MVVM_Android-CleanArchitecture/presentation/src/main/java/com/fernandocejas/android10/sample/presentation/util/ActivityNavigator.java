@@ -1,4 +1,4 @@
-package com.fernandocejas.android10.sample.presentation.navigation;
+package com.fernandocejas.android10.sample.presentation.util;
 
 import android.app.Activity;
 import android.content.Context;

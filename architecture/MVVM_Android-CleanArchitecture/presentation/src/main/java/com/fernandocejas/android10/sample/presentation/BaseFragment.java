@@ -3,15 +3,13 @@
  *
  * @author Fernando Cejas (the android10 coder)
  */
-package com.fernandocejas.android10.sample.presentation.view.fragment;
+package com.fernandocejas.android10.sample.presentation;
 
 import android.app.Fragment;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.widget.Toast;
-
-import com.fernandocejas.android10.sample.presentation.viewmodel.ViewModel;
 
 /**
  * Base {@link android.app.Fragment} class for every fragment in this application.

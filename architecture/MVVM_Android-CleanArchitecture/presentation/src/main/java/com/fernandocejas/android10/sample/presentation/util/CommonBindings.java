@@ -1,4 +1,4 @@
-package com.fernandocejas.android10.sample.presentation.view;
+package com.fernandocejas.android10.sample.presentation.util;
 
 import android.databinding.BindingAdapter;
 import android.graphics.drawable.Drawable;

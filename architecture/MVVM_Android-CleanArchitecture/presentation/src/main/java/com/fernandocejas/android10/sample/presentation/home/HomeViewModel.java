@@ -1,9 +1,10 @@
-package com.fernandocejas.android10.sample.presentation.viewmodel;
+package com.fernandocejas.android10.sample.presentation.home;
 
 import android.view.View;
 
-import com.fernandocejas.android10.sample.presentation.navigation.ActivityNavigator;
-import com.fernandocejas.android10.sample.presentation.view.activity.UserListActivity;
+import com.fernandocejas.android10.sample.presentation.userlist.UserListActivity;
+import com.fernandocejas.android10.sample.presentation.util.ActivityNavigator;
+import com.fernandocejas.android10.sample.presentation.ViewModel;
 
 /**
  * Created by rocko on 15-11-5.

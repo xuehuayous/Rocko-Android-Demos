@@ -1,13 +1,13 @@
-package com.fernandocejas.android10.sample.presentation.view.activity;
+package com.fernandocejas.android10.sample.presentation.home;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 
+import com.fernandocejas.android10.sample.presentation.BaseActivity;
 import com.fernandocejas.android10.sample.presentation.HomeBinding;
 import com.fernandocejas.android10.sample.presentation.R;
-import com.fernandocejas.android10.sample.presentation.viewmodel.HomeViewModel;
 
 /**
  * Main application screen. This is the app entry point.

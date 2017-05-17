@@ -1,4 +1,4 @@
-package com.fernandocejas.android10.sample.presentation.view.activity;
+package com.fernandocejas.android10.sample.presentation;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -6,9 +6,6 @@ import android.app.FragmentTransaction;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-
-import com.fernandocejas.android10.sample.presentation.AndroidApplication;
-import com.fernandocejas.android10.sample.presentation.viewmodel.ViewModel;
 
 /**
  * Base {@link android.app.Activity} class for every Activity in this application.

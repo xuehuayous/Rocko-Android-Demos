@@ -1,4 +1,4 @@
-package com.fernandocejas.android10.sample.presentation.viewmodel;
+package com.fernandocejas.android10.sample.presentation;
 
 import android.databinding.ObservableBoolean;
 import android.view.View;

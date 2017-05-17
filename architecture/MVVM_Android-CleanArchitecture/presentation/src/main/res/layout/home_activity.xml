@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.fernandocejas.android10.sample.presentation.viewmodel.HomeViewModel" />
+            type="com.fernandocejas.android10.sample.presentation.home.HomeViewModel" />
     </data>
 
     <LinearLayout

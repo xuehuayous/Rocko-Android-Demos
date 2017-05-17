@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.fernandocejas.android10.sample.presentation.viewmodel.UserDetailsViewModel" />
+            type="com.fernandocejas.android10.sample.presentation.userdetail.UserDetailsViewModel" />
 
     </data>
 

@@ -3,19 +3,19 @@
  *
  * @author Fernando Cejas (the android10 coder)
  */
-package com.fernandocejas.android10.sample.presentation.view.fragment;
+package com.fernandocejas.android10.sample.presentation.userlist;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.fernandocejas.android10.sample.presentation.BaseFragment;
 import com.fernandocejas.android10.sample.presentation.R;
 import com.fernandocejas.android10.sample.presentation.UserListBinding;
-import com.fernandocejas.android10.sample.presentation.view.adapter.UsersLayoutManager;
-import com.fernandocejas.android10.sample.presentation.viewmodel.UserListViewModel;
 
 /**
  * Fragment that shows a list of Users.
@@ -48,7 +48,7 @@ public class UserListFragment extends BaseFragment<UserListViewModel, UserListBi
     }
 
     private void setupUI() {
-        getBinding().rvUsers.setLayoutManager(new UsersLayoutManager(getActivity()));
+        getBinding().rvUsers.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
     @Override

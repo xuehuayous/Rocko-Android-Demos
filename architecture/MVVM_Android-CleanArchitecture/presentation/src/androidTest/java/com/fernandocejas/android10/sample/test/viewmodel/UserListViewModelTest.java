@@ -1,22 +1,17 @@
 package com.fernandocejas.android10.sample.test.viewmodel;
 
-import android.app.Activity;
-import android.app.Instrumentation;
-import android.content.Intent;
 import android.support.test.espresso.intent.rule.IntentsTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
 
 import com.fernandocejas.android10.sample.data.dto.User;
-import com.fernandocejas.android10.sample.presentation.AndroidApplication;
 import com.fernandocejas.android10.sample.presentation.R;
 import com.fernandocejas.android10.sample.presentation.mapper.UserModelDataMapper;
 import com.fernandocejas.android10.sample.presentation.model.UserModel;
-import com.fernandocejas.android10.sample.presentation.navigation.ActivityNavigator;
 import com.fernandocejas.android10.sample.presentation.view.activity.UserDetailsActivity;
-import com.fernandocejas.android10.sample.presentation.view.activity.UserListActivity;
+import com.fernandocejas.android10.sample.presentation.activity.userlist.UserListActivity;
 import com.fernandocejas.android10.sample.presentation.view.adapter.UsersAdapter;
-import com.fernandocejas.android10.sample.presentation.view.fragment.UserListFragment;
+import com.fernandocejas.android10.sample.presentation.activity.userlist.UserListFragment;
 import com.fernandocejas.android10.sample.presentation.viewmodel.UserListViewModel;
 
 import org.junit.Before;
@@ -35,7 +30,6 @@ import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.Intents.intending;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasData;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasExtra;
-import static android.support.test.espresso.intent.matcher.IntentMatchers.isInternal;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static junit.framework.Assert.assertEquals;

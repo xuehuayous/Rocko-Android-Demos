@@ -1,10 +1,9 @@
-package com.fernandocejas.android10.sample.presentation.viewmodel;
+package com.fernandocejas.android10.sample.presentation.userlist;
 
 
 import android.content.Intent;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
-import android.util.Log;
 import android.view.View;
 
 import com.fernandocejas.android10.sample.data.dto.User;
@@ -12,13 +11,10 @@ import com.fernandocejas.android10.sample.domain.interactor.DefaultSubscriber;
 import com.fernandocejas.android10.sample.domain.interactor.GetUserList;
 import com.fernandocejas.android10.sample.domain.interactor.UseCase;
 import com.fernandocejas.android10.sample.presentation.AndroidApplication;
-import com.fernandocejas.android10.sample.presentation.mapper.UserModelDataMapper;
-import com.fernandocejas.android10.sample.presentation.model.UserModel;
-import com.fernandocejas.android10.sample.presentation.navigation.ActivityNavigator;
-import com.fernandocejas.android10.sample.presentation.view.activity.UserDetailsActivity;
-import com.fernandocejas.android10.sample.presentation.view.adapter.UsersAdapter;
+import com.fernandocejas.android10.sample.presentation.LoadingViewModel;
+import com.fernandocejas.android10.sample.presentation.userdetail.UserDetailsActivity;
+import com.fernandocejas.android10.sample.presentation.util.ActivityNavigator;
 
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -31,8 +27,6 @@ public class UserListViewModel extends LoadingViewModel {
     public final ObservableField<UsersAdapter> usersListAdapter = new ObservableField<>();
 
     UseCase getUserList = new GetUserList(AndroidApplication.getContext());
-    UserModelDataMapper userModelDataMapper = new UserModelDataMapper();
-
 
     @BindView
     @Override
@@ -70,8 +64,7 @@ public class UserListViewModel extends LoadingViewModel {
         getUserList.execute(new DefaultSubscriber<List<User>>() {
             @Override
             public void onNext(List<User> users) {
-                Collection<UserModel> userModelsCollection = userModelDataMapper.transformUsers(users);
-                UsersAdapter usersAdapter = new UsersAdapter(AndroidApplication.getContext(), userModelsCollection);
+                UsersAdapter usersAdapter = new UsersAdapter(AndroidApplication.getContext(), users);
                 usersAdapter.setOnItemClickListener(onUserItemClick());
                 showContentList(usersAdapter);
             }
@@ -98,8 +91,8 @@ public class UserListViewModel extends LoadingViewModel {
     public UsersAdapter.OnItemClickListener onUserItemClick() {
         return new UsersAdapter.OnItemClickListener() {
             @Override
-            public void onUserItemClicked(UserModel userModel) {
-                Intent intent = UserDetailsActivity.getCallingIntent(AndroidApplication.getInstance().getCurrentActivity(), userModel.getUserId());
+            public void onUserItemClicked(User user) {
+                Intent intent = UserDetailsActivity.getCallingIntent(AndroidApplication.getInstance().getCurrentActivity(), user.getUserId());
                 ActivityNavigator.navigateTo(UserDetailsActivity.class, intent);
             }
         };

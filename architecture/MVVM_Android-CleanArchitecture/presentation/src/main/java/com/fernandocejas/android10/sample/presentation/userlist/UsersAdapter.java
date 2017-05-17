@@ -3,7 +3,7 @@
  *
  * @author Fernando Cejas (the android10 coder)
  */
-package com.fernandocejas.android10.sample.presentation.view.adapter;
+package com.fernandocejas.android10.sample.presentation.userlist;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -13,35 +13,34 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.fernandocejas.android10.sample.data.dto.User;
 import com.fernandocejas.android10.sample.presentation.R;
 import com.fernandocejas.android10.sample.presentation.RowUserBinding;
-import com.fernandocejas.android10.sample.presentation.model.UserModel;
 
 import java.util.Collection;
 import java.util.List;
 
-
 /**
- * Adaptar that manages a collection of {@link UserModel}.
+ * Adaptar that manages a collection of {@link User}.
  */
 public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHolder> {
 
     private RowUserBinding rowUserBinding;
 
     public interface OnItemClickListener {
-        void onUserItemClicked(UserModel userModel);
+        void onUserItemClicked(User user);
     }
 
-    private List<UserModel> usersCollection;
+    private List<User> usersCollection;
     private final LayoutInflater layoutInflater;
 
     private OnItemClickListener onItemClickListener;
 
-    public UsersAdapter(Context context, Collection<UserModel> usersCollection) {
+    public UsersAdapter(Context context, Collection<User> usersCollection) {
         this.validateUsersCollection(usersCollection);
         this.layoutInflater =
                 (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        this.usersCollection = (List<UserModel>) usersCollection;
+        this.usersCollection = (List<User>) usersCollection;
     }
 
     @Override
@@ -58,13 +57,13 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
 
     @Override
     public void onBindViewHolder(UserViewHolder holder, final int position) {
-        final UserModel userModel = this.usersCollection.get(position);
-        holder.textViewTitle.setText(userModel.getFullName());
+        final User user = this.usersCollection.get(position);
+        holder.textViewTitle.setText(user.getFullName());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (UsersAdapter.this.onItemClickListener != null) {
-                    UsersAdapter.this.onItemClickListener.onUserItemClicked(userModel);
+                    UsersAdapter.this.onItemClickListener.onUserItemClicked(user);
                 }
             }
         });
@@ -75,9 +74,9 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
         return position;
     }
 
-    public void setUsersCollection(Collection<UserModel> usersCollection) {
+    public void setUsersCollection(Collection<User> usersCollection) {
         this.validateUsersCollection(usersCollection);
-        this.usersCollection = (List<UserModel>) usersCollection;
+        this.usersCollection = (List<User>) usersCollection;
         this.notifyDataSetChanged();
     }
 
@@ -85,7 +84,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
         this.onItemClickListener = onItemClickListener;
     }
 
-    private void validateUsersCollection(Collection<UserModel> usersCollection) {
+    private void validateUsersCollection(Collection<User> usersCollection) {
         if (usersCollection == null) {
             throw new IllegalArgumentException("The list cannot be null");
         }

@@ -1,4 +1,4 @@
-package com.fernandocejas.android10.sample.presentation.viewmodel;
+package com.fernandocejas.android10.sample.presentation.userdetail;
 
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
@@ -8,8 +8,7 @@ import com.fernandocejas.android10.sample.data.dto.User;
 import com.fernandocejas.android10.sample.domain.interactor.DefaultSubscriber;
 import com.fernandocejas.android10.sample.domain.interactor.GetUserDetails;
 import com.fernandocejas.android10.sample.presentation.AndroidApplication;
-import com.fernandocejas.android10.sample.presentation.mapper.UserModelDataMapper;
-import com.fernandocejas.android10.sample.presentation.model.UserModel;
+import com.fernandocejas.android10.sample.presentation.LoadingViewModel;
 
 /**
  * Created by rocko on 15-11-5.
@@ -17,10 +16,9 @@ import com.fernandocejas.android10.sample.presentation.model.UserModel;
 public class UserDetailsViewModel extends LoadingViewModel {
 
     public final ObservableBoolean showUserDetails = new ObservableBoolean(true);
-    public final ObservableField<UserModel> userObs = new ObservableField<>();
+    public final ObservableField<User> userObs = new ObservableField<>();
 
     GetUserDetails getUserDetailsUseCase = new GetUserDetails(AndroidApplication.getContext());
-    UserModelDataMapper userModelDataMapper = new UserModelDataMapper();
 
     @BindView
     @Override
@@ -39,11 +37,11 @@ public class UserDetailsViewModel extends LoadingViewModel {
     }
 
     @BindView
-    public void showUserDetails(UserModel userModel) {
+    public void showUserDetails(User user) {
         showLoading.set(false);
         showRetry.set(false);
         showUserDetails.set(true);
-        userObs.set(userModel);
+        userObs.set(user);
     }
 
 
@@ -54,7 +52,7 @@ public class UserDetailsViewModel extends LoadingViewModel {
         getUserDetailsUseCase.execute(new DefaultSubscriber<User>() {
             @Override
             public void onNext(User user) {
-                showUserDetails(userModelDataMapper.transformUser(user));
+                showUserDetails(user);
             }
 
             @Override
