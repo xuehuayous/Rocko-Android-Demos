@@ -19,6 +19,7 @@ ext {
   okHttpVersion = '2.5.0'
   androidAnnotationsVersion = '23.0.1'
   retrofit2Version = '2.3.0'
+  glideVersion = '3.8.0'
 
   //Testing
   robolectricVersion = '3.0'
@@ -36,6 +37,7 @@ ext {
       recyclerView:       "com.android.support:recyclerview-v7:${recyclerViewVersion}",
       rxJava:             "io.reactivex:rxjava:${rxJavaVersion}",
       rxAndroid:          "io.reactivex:rxandroid:${rxAndroidVersion}",
+      glide:              "com.github.bumptech.glide:glide:${glideVersion}"
   ]
 
   presentationTestDependencies = [
