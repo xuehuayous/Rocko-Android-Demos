@@ -19,7 +19,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.fernandocejas.android10.sample.data.entity.UserEntity;
+import com.fernandocejas.android10.sample.data.entity.User;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -45,7 +45,7 @@ public class RestApiImpl implements RestApi {
     /**
      * Constructor of the class
      *
-     * @param context              {@link android.content.Context}.
+     * @param context {@link android.content.Context}.
      */
     public RestApiImpl(Context context) {
         if (context == null) {
@@ -68,22 +68,22 @@ public class RestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<List<UserEntity>> userEntityList() {
+    public Observable<List<User>> userEntityList() {
         return restApi.userEntityList()
-                .filter(new Func1<List<UserEntity>, Boolean>() {
+                .filter(new Func1<List<User>, Boolean>() {
                     @Override
-                    public Boolean call(List<UserEntity> userEntities) {
+                    public Boolean call(List<User> userEntities) {
                         return isThereInternetConnection();
                     }
                 });
     }
 
     @Override
-    public Observable<UserEntity> userEntityById(final int userId) {
+    public Observable<User> userEntityById(final int userId) {
         return restApi.userEntityById(userId)
-                .filter(new Func1<UserEntity, Boolean>() {
+                .filter(new Func1<User, Boolean>() {
                     @Override
-                    public Boolean call(UserEntity userEntity) {
+                    public Boolean call(User userEntity) {
                         return isThereInternetConnection();
                     }
                 });

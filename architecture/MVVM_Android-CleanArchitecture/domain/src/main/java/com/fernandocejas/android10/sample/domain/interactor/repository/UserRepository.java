@@ -16,7 +16,7 @@
 package com.fernandocejas.android10.sample.domain.interactor.repository;
 
 
-import com.fernandocejas.android10.sample.data.dto.User;
+import com.fernandocejas.android10.sample.data.entity.User;
 
 import java.util.List;
 

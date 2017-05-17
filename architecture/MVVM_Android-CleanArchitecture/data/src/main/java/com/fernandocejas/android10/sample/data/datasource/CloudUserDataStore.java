@@ -16,7 +16,7 @@
 package com.fernandocejas.android10.sample.data.datasource;
 
 import com.fernandocejas.android10.sample.data.cache.UserCache;
-import com.fernandocejas.android10.sample.data.entity.UserEntity;
+import com.fernandocejas.android10.sample.data.entity.User;
 import com.fernandocejas.android10.sample.data.net.RestApi;
 
 import java.util.List;
@@ -32,9 +32,9 @@ public class CloudUserDataStore implements UserDataStore {
     private final RestApi restApi;
     private final UserCache userCache;
 
-    private final Action1<UserEntity> saveToCacheAction = new Action1<UserEntity>() {
+    private final Action1<User> saveToCacheAction = new Action1<User>() {
         @Override
-        public void call(UserEntity userEntity) {
+        public void call(User userEntity) {
             if (userEntity != null) {
                 CloudUserDataStore.this.userCache.put(userEntity);
             }
@@ -53,12 +53,12 @@ public class CloudUserDataStore implements UserDataStore {
     }
 
     @Override
-    public Observable<List<UserEntity>> userEntityList() {
+    public Observable<List<User>> userEntityList() {
         return this.restApi.userEntityList();
     }
 
     @Override
-    public Observable<UserEntity> userEntityDetails(final int userId) {
+    public Observable<User> userEntityDetails(final int userId) {
         return this.restApi.userEntityById(userId)
                 .doOnNext(saveToCacheAction);
     }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data class="com.fernandocejas.android10.sample.presentation.UserListBinding">
+    <data class="com.fernandocejas.android10.sample.presentation.userlist.UserListBinding">
 
         <import type="android.view.View" />
 
@@ -20,16 +20,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="vertical"
-            bind:adapter="@{viewModel.usersListAdapter}"
-            bind:visibility="@{viewModel.showContentList?View.VISIBLE:View.GONE}" />
+            android:visibility="@{viewModel.showContentList ? View.VISIBLE : View.GONE}"
+            app:adapter="@{viewModel.usersListAdapter}" />
 
         <include
             layout="@layout/view_progress"
-            bind:viewModel="@{viewModel}" />
+            app:viewModel="@{viewModel}" />
 
         <include
             layout="@layout/view_retry"
-            bind:viewModel="@{viewModel}" />
+            app:viewModel="@{viewModel}" />
 
     </RelativeLayout>
 

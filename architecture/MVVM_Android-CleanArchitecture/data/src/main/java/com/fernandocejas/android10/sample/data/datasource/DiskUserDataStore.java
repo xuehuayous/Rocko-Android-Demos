@@ -16,7 +16,7 @@
 package com.fernandocejas.android10.sample.data.datasource;
 
 import com.fernandocejas.android10.sample.data.cache.UserCache;
-import com.fernandocejas.android10.sample.data.entity.UserEntity;
+import com.fernandocejas.android10.sample.data.entity.User;
 
 import java.util.List;
 
@@ -39,13 +39,13 @@ public class DiskUserDataStore implements UserDataStore {
     }
 
     @Override
-    public Observable<List<UserEntity>> userEntityList() {
+    public Observable<List<User>> userEntityList() {
         //TODO: implement simple cache for storing/retrieving collections of users.
         throw new UnsupportedOperationException("Operation is not available!!!");
     }
 
     @Override
-    public Observable<UserEntity> userEntityDetails(final int userId) {
+    public Observable<User> userEntityDetails(final int userId) {
         return this.userCache.get(userId);
     }
 }

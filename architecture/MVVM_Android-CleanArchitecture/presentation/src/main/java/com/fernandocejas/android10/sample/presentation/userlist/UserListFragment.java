@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 
 import com.fernandocejas.android10.sample.presentation.BaseFragment;
 import com.fernandocejas.android10.sample.presentation.R;
-import com.fernandocejas.android10.sample.presentation.UserListBinding;
 
 /**
  * Fragment that shows a list of Users.

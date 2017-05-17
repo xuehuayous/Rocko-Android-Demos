@@ -15,7 +15,7 @@
  */
 package com.fernandocejas.android10.sample.data.net;
 
-import com.fernandocejas.android10.sample.data.entity.UserEntity;
+import com.fernandocejas.android10.sample.data.entity.User;
 
 import java.util.List;
 
@@ -31,16 +31,16 @@ public interface RestApi {
             "https://raw.githubusercontent.com/android10/Sample-Data/master/Android-CleanArchitecture/";
 
     /**
-     * Retrieves an {@link rx.Observable} which will emit a List of {@link UserEntity}.
+     * Retrieves an {@link rx.Observable} which will emit a List of {@link User}.
      */
     @GET("users.json")
-    Observable<List<UserEntity>> userEntityList();
+    Observable<List<User>> userEntityList();
 
     /**
-     * Retrieves an {@link rx.Observable} which will emit a {@link UserEntity}.
+     * Retrieves an {@link rx.Observable} which will emit a {@link User}.
      *
      * @param userId The user id used to get user data.
      */
     @GET("user_{userId}.json")
-    Observable<UserEntity> userEntityById(@Path("userId") int userId);
+    Observable<User> userEntityById(@Path("userId") int userId);
 }

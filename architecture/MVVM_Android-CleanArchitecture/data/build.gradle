@@ -42,6 +42,7 @@ dependencies {
   compile dataDependencies.gson
   compile dataDependencies.rxJava
   compile dataDependencies.rxAndroid
+  compile dataDependencies.asyncUtil
   compile dataDependencies.androidAnnotations
   compile dataDependencies.retrofit2
   compile dataDependencies.converterGson

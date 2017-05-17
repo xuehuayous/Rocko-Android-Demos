@@ -6,7 +6,7 @@ import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 import android.view.View;
 
-import com.fernandocejas.android10.sample.data.dto.User;
+import com.fernandocejas.android10.sample.data.entity.User;
 import com.fernandocejas.android10.sample.domain.interactor.DefaultSubscriber;
 import com.fernandocejas.android10.sample.domain.interactor.GetUserList;
 import com.fernandocejas.android10.sample.domain.interactor.UseCase;

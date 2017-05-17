@@ -16,7 +16,7 @@
 package com.fernandocejas.android10.sample.data.entity.mapper;
 
 import com.fernandocejas.android10.sample.data.ApplicationTestCase;
-import com.fernandocejas.android10.sample.data.entity.UserEntity;
+import com.fernandocejas.android10.sample.data.entity.User;
 import com.google.gson.JsonSyntaxException;
 import java.util.Collection;
 import org.junit.Before;
@@ -61,7 +61,7 @@ public class UserEntityJsonMapperTest extends ApplicationTestCase {
 
   @Test
   public void testTransformUserEntityHappyCase() {
-    UserEntity userEntity = userEntityJsonMapper.transformUserEntity(JSON_RESPONSE_USER_DETAILS);
+    User userEntity = userEntityJsonMapper.transformUserEntity(JSON_RESPONSE_USER_DETAILS);
 
     assertThat(userEntity.getUserId(), is(1));
     assertThat(userEntity.getFullname(), is(equalTo("Simon Hill")));
@@ -70,12 +70,12 @@ public class UserEntityJsonMapperTest extends ApplicationTestCase {
 
   @Test
   public void testTransformUserEntityCollectionHappyCase() {
-    Collection<UserEntity> userEntityCollection =
+    Collection<User> userEntityCollection =
         userEntityJsonMapper.transformUserEntityCollection(
             JSON_RESPONSE_USER_COLLECTION);
 
-    assertThat(((UserEntity) userEntityCollection.toArray()[0]).getUserId(), is(1));
-    assertThat(((UserEntity) userEntityCollection.toArray()[1]).getUserId(), is(12));
+    assertThat(((User) userEntityCollection.toArray()[0]).getUserId(), is(1));
+    assertThat(((User) userEntityCollection.toArray()[1]).getUserId(), is(12));
     assertThat(userEntityCollection.size(), is(2));
   }
 

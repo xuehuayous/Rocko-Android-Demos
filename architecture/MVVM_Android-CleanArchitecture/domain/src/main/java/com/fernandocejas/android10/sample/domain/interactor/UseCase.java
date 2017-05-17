@@ -15,14 +15,10 @@
  */
 package com.fernandocejas.android10.sample.domain.interactor;
 
-import com.fernandocejas.android10.sample.data.executor.JobExecutor;
-import com.fernandocejas.android10.sample.data.executor.PostExecutionThread;
-import com.fernandocejas.android10.sample.data.executor.ThreadExecutor;
-import com.fernandocejas.android10.sample.data.executor.UIThread;
-
 import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.Subscriptions;
 
@@ -36,29 +32,7 @@ import rx.subscriptions.Subscriptions;
  */
 public abstract class UseCase<T> {
 
-    ThreadExecutor threadExecutor = new JobExecutor();
-    PostExecutionThread postExecutionThread = new UIThread();
-
     private Subscription subscription = Subscriptions.empty();
-
-
-    /**
-     * Set the background worker threads
-     *
-     * @param threadExecutor
-     */
-    public void setThreadExecutor(ThreadExecutor threadExecutor) {
-        this.threadExecutor = threadExecutor;
-    }
-
-    /**
-     * Set the foreground thread working threads;
-     *
-     * @param postExecutionThread
-     */
-    public void setPostExecutionThread(PostExecutionThread postExecutionThread) {
-        this.postExecutionThread = postExecutionThread;
-    }
 
     /**
      * Builds an {@link rx.Observable} which will be used when executing the current {@link UseCase}.
@@ -73,8 +47,8 @@ public abstract class UseCase<T> {
     @SuppressWarnings("unchecked")
     public void execute(Subscriber UseCaseSubscriber) {
         this.subscription = this.buildUseCaseObservable()
-                .subscribeOn(Schedulers.from(threadExecutor))
-                .observeOn(postExecutionThread.getScheduler())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(UseCaseSubscriber);
     }
 

@@ -15,7 +15,7 @@
  */
 package com.fernandocejas.android10.sample.data.cache.serializer;
 
-import com.fernandocejas.android10.sample.data.entity.UserEntity;
+import com.fernandocejas.android10.sample.data.entity.User;
 import com.google.gson.Gson;
 
 /**
@@ -31,21 +31,19 @@ public class JsonSerializer {
     /**
      * Serialize an object to Json.
      *
-     * @param userEntity {@link UserEntity} to serialize.
+     * @param userEntity {@link User} to serialize.
      */
-    public String serialize(UserEntity userEntity) {
-        String jsonString = gson.toJson(userEntity, UserEntity.class);
-        return jsonString;
+    public String serialize(User userEntity) {
+        return gson.toJson(userEntity, User.class);
     }
 
     /**
      * Deserialize a json representation of an object.
      *
      * @param jsonString A json string to deserialize.
-     * @return {@link UserEntity}
+     * @return {@link User}
      */
-    public UserEntity deserialize(String jsonString) {
-        UserEntity userEntity = gson.fromJson(jsonString, UserEntity.class);
-        return userEntity;
+    public User deserialize(String jsonString) {
+        return gson.fromJson(jsonString, User.class);
     }
 }

@@ -15,6 +15,8 @@
  */
 package com.fernandocejas.android10.sample.data.dto;
 
+import com.fernandocejas.android10.sample.data.entity.User;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -29,7 +31,8 @@ public class UserTest {
 
   @Before
   public void setUp() {
-    user = new User(FAKE_USER_ID);
+    user = new User();
+    user.setUserId(FAKE_USER_ID);
   }
 
   @Test

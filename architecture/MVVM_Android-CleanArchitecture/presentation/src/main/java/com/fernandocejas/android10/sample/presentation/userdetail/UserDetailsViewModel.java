@@ -4,7 +4,7 @@ import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 import android.view.View;
 
-import com.fernandocejas.android10.sample.data.dto.User;
+import com.fernandocejas.android10.sample.data.entity.User;
 import com.fernandocejas.android10.sample.domain.interactor.DefaultSubscriber;
 import com.fernandocejas.android10.sample.domain.interactor.GetUserDetails;
 import com.fernandocejas.android10.sample.presentation.AndroidApplication;
@@ -43,7 +43,6 @@ public class UserDetailsViewModel extends LoadingViewModel {
         showUserDetails.set(true);
         userObs.set(user);
     }
-
 
     @Command
     public void loadUserDetailsCommand(int userId) {

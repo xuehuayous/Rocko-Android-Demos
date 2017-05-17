@@ -17,7 +17,7 @@ package com.fernandocejas.android10.sample.domain.interactor.repository;
 
 import com.fernandocejas.android10.sample.data.ApplicationTestCase;
 import com.fernandocejas.android10.sample.data.dto.User;
-import com.fernandocejas.android10.sample.data.entity.UserEntity;
+import com.fernandocejas.android10.sample.data.entity.User;
 import com.fernandocejas.android10.sample.data.entity.mapper.UserEntityDataMapper;
 import com.fernandocejas.android10.sample.data.datasource.UserDataStore;
 import com.fernandocejas.android10.sample.data.datasource.UserDataStoreFactory;
@@ -47,7 +47,7 @@ public class UserDataRepositoryTest extends ApplicationTestCase {
   @Mock private UserDataStoreFactory mockUserDataStoreFactory;
   @Mock private UserEntityDataMapper mockUserEntityDataMapper;
   @Mock private UserDataStore mockUserDataStore;
-  @Mock private UserEntity mockUserEntity;
+  @Mock private User mockUserEntity;
   @Mock private User mockUser;
 
   @Rule
@@ -65,8 +65,8 @@ public class UserDataRepositoryTest extends ApplicationTestCase {
 
   @Test
   public void testGetUsersHappyCase() {
-    List<UserEntity> usersList = new ArrayList<>();
-    usersList.add(new UserEntity());
+    List<User> usersList = new ArrayList<>();
+    usersList.add(new User());
     given(mockUserDataStore.userEntityList()).willReturn(Observable.just(usersList));
 
     userDataRepository.users();
@@ -77,7 +77,7 @@ public class UserDataRepositoryTest extends ApplicationTestCase {
 
   @Test
   public void testGetUserHappyCase() {
-    UserEntity userEntity = new UserEntity();
+    User userEntity = new User();
     given(mockUserDataStore.userEntityDetails(FAKE_USER_ID)).willReturn(Observable.just(userEntity));
     userDataRepository.user(FAKE_USER_ID);
 

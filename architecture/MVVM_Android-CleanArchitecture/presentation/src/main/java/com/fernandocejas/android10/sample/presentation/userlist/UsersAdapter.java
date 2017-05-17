@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.fernandocejas.android10.sample.data.dto.User;
+import com.fernandocejas.android10.sample.data.entity.User;
 import com.fernandocejas.android10.sample.presentation.R;
 import com.fernandocejas.android10.sample.presentation.RowUserBinding;
 
@@ -58,7 +58,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
     @Override
     public void onBindViewHolder(UserViewHolder holder, final int position) {
         final User user = this.usersCollection.get(position);
-        holder.textViewTitle.setText(user.getFullName());
+        holder.textViewTitle.setText(user.getFullname());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

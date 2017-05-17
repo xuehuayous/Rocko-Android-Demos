@@ -16,7 +16,7 @@
 package com.fernandocejas.android10.sample.data.cache.serializer;
 
 import com.fernandocejas.android10.sample.data.ApplicationTestCase;
-import com.fernandocejas.android10.sample.data.entity.UserEntity;
+import com.fernandocejas.android10.sample.data.entity.User;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -44,9 +44,9 @@ public class JsonSerializerTest extends ApplicationTestCase {
 
   @Test
   public void testSerializeHappyCase() {
-    UserEntity userEntityOne = jsonSerializer.deserialize(JSON_RESPONSE);
+    User userEntityOne = jsonSerializer.deserialize(JSON_RESPONSE);
     String jsonString = jsonSerializer.serialize(userEntityOne);
-    UserEntity userEntityTwo = jsonSerializer.deserialize(jsonString);
+    User userEntityTwo = jsonSerializer.deserialize(jsonString);
 
     assertThat(userEntityOne.getUserId(), is(userEntityTwo.getUserId()));
     assertThat(userEntityOne.getFullname(), is(equalTo(userEntityTwo.getFullname())));
@@ -55,7 +55,7 @@ public class JsonSerializerTest extends ApplicationTestCase {
 
   @Test
   public void testDesearializeHappyCase() {
-    UserEntity userEntity = jsonSerializer.deserialize(JSON_RESPONSE);
+    User userEntity = jsonSerializer.deserialize(JSON_RESPONSE);
 
     assertThat(userEntity.getUserId(), is(1));
     assertThat(userEntity.getFullname(), is("Simon Hill"));

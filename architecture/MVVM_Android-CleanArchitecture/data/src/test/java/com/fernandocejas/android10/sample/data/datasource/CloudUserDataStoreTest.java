@@ -17,7 +17,7 @@ package com.fernandocejas.android10.sample.data.datasource;
 
 import com.fernandocejas.android10.sample.data.ApplicationTestCase;
 import com.fernandocejas.android10.sample.data.cache.UserCache;
-import com.fernandocejas.android10.sample.data.entity.UserEntity;
+import com.fernandocejas.android10.sample.data.entity.User;
 import com.fernandocejas.android10.sample.data.net.RestApi;
 import org.junit.Before;
 import org.junit.Test;
@@ -51,8 +51,8 @@ public class CloudUserDataStoreTest extends ApplicationTestCase {
 
   @Test
   public void testGetUserEntityDetailsFromApi() {
-    UserEntity fakeUserEntity = new UserEntity();
-    Observable<UserEntity> fakeObservable = Observable.just(fakeUserEntity);
+    User fakeUserEntity = new User();
+    Observable<User> fakeObservable = Observable.just(fakeUserEntity);
     given(mockRestApi.userEntityById(FAKE_USER_ID)).willReturn(fakeObservable);
 
     cloudUserDataStore.userEntityDetails(FAKE_USER_ID);

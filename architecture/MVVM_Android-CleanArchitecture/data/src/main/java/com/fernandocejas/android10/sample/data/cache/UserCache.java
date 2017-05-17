@@ -15,7 +15,7 @@
  */
 package com.fernandocejas.android10.sample.data.cache;
 
-import com.fernandocejas.android10.sample.data.entity.UserEntity;
+import com.fernandocejas.android10.sample.data.entity.User;
 
 import rx.Observable;
 
@@ -24,18 +24,18 @@ import rx.Observable;
  */
 public interface UserCache {
     /**
-     * Gets an {@link rx.Observable} which will emit a {@link UserEntity}.
+     * Gets an {@link rx.Observable} which will emit a {@link User}.
      *
      * @param userId The user id to retrieve data.
      */
-    Observable<UserEntity> get(final int userId);
+    Observable<User> get(final int userId);
 
     /**
      * Puts and element into the cache.
      *
      * @param userEntity Element to insert in the cache.
      */
-    void put(UserEntity userEntity);
+    void put(User userEntity);
 
     /**
      * Checks if an element (User) exists in the cache.

@@ -15,7 +15,7 @@
  */
 package com.fernandocejas.android10.sample.data.datasource;
 
-import com.fernandocejas.android10.sample.data.entity.UserEntity;
+import com.fernandocejas.android10.sample.data.entity.User;
 
 import java.util.List;
 
@@ -26,14 +26,14 @@ import rx.Observable;
  */
 public interface UserDataStore {
     /**
-     * Get an {@link rx.Observable} which will emit a List of {@link UserEntity}.
+     * Get an {@link rx.Observable} which will emit a List of {@link User}.
      */
-    Observable<List<UserEntity>> userEntityList();
+    Observable<List<User>> userEntityList();
 
     /**
-     * Get an {@link rx.Observable} which will emit a {@link UserEntity} by its id.
+     * Get an {@link rx.Observable} which will emit a {@link User} by its id.
      *
      * @param userId The id to retrieve user data.
      */
-    Observable<UserEntity> userEntityDetails(final int userId);
+    Observable<User> userEntityDetails(final int userId);
 }
